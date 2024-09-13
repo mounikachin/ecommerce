@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="page-header mb-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2>Food Menu</h2>
+            </div>
+            <div class="col-12">
+                <a href="">Home</a>
+                <a href="">Dish</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<section class="menu-food mt-3 d-flex justify-content-start flex-wrap">
+    {% for d in dish %} 
+    <div class="card border border-dark overflow-hidden " style="width: 18rem; margin:1rem; border-radius:20px;">
+        <img class="card-img-top" width="286" height="190" src="{{d.image.url}}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title text-center">{{d.name}}</h5>
+          <p class="card-text text-dark text-center">MRP - <s>{{d.price}}</s></p>
+          <p class="card-text text-dark text-center">Disc - {{d.discount_price}}  </p>
+          <div class="d-flex justify-content-center">
+            {% if d.is_available %}
+            <a href="{% url 'cart' d.id %}" class="btn btn-primary">Add</a>
+            {% else %}
+            <a href="#" class="btn btn-danger">Not available</a>
+            {% endif %}
+            
+        </div>
+        </div>
+        
+      </div>
+    {% endfor %}
+</section>
+{% endblock content %}

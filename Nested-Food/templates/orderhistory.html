@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+          <!-- Page Header Start -->
+          <div class="page-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h2>Order History</h2>
+                    </div>
+                    <div class="col-12">
+                        <a href="">Home</a>
+                        <a href="">Order</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Page Header End -->
+        <div class="text-center text-dark"> Order history</div>
+    {% if OH %}
+        {% for o in OH %}
+        <div class="d-flex justify-content-around align-items-center border mb-2">
+            <div class="d-flex m-1">
+                <img src="{{o.product.image.url}}" width="200px" height="200px" alt="no">
+                <div class="card-body">
+                    <h5>Product : {{o.product}}</h5>
+                    <p class="font-weight-bold">Price : {{o.ammount}}</p>
+                    <p class="font-weight-bold">Qnt : {{o.quantity}}</p>
+                    <p class="font-weight-bold">Date : {{o.date}}</p>
+                </div>
+            </div>
+            <div>
+                <h4>Order Status : <span class="alert alert-warning">{{o.status}}</span></h4>
+                <br>
+                <br>
+                <h4>Payment Status : <span class="alert alert-success">Successfull</span></h4>
+            </div>
+        </div>
+        {% endfor %}
+    
+        {% else %}
+        <div class="d-flex flex-column align-items-center">
+            <h2 class="alert  text-center">Order is empty<i class="fa-solid fa-cart-arrow-down"></i></h2>
+            <div>
+                <a href="{% url 'menu' %}" class="btn btn-outline-dark ">continue shopping</a>
+            </div>
+        </div>
+        
+        {% endif %}
+
+        
+{% endblock  %}

@@ -1,0 +1,170 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>𝑸𝒖𝒊𝒄𝒌-𝑭𝒂𝒗</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="Free Website Template" name="keywords">
+        <meta content="Free Website Template" name="description">
+
+        <!-- Favicon -->
+        <link href="img/favicon.ico" rel="icon">
+
+        <!-- Google Font -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Nunito:600,700" rel="stylesheet"> 
+        
+        <!-- CSS Libraries -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+        <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
+        <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+        <link href="{% static 'lib/flaticon/font/flaticon.css" rel="stylesheet' %}">
+        <link href="{% static 'lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css' %}" rel="stylesheet" />
+        <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+        <!-- Template Stylesheet -->
+        <link href="{% static 'css/style.css' %}" rel="stylesheet">
+        <style>
+            #signup{
+                background-image: url("{% static 'img/page-header.jpg' %}");
+                background-size: cover;
+                width: 100%;
+            }
+            #login{
+                width: 100%;
+                background-image: url("{% static 'img/page-header.jpg' %}");
+                background-size: cover;
+            }
+            
+        </style>
+    </head>
+
+    <body>
+        <!-- Nav Bar Start -->
+        <div class="navbar navbar-expand-lg bg-light navbar-light">
+            <div class="container-fluid">
+                <a href="{% url 'index' %}" class="navbar-brand">𝑸𝒖𝒊𝒄𝒌-<span>𝑭𝒂𝒗</span></a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav ml-auto">
+                        <a href="{% url 'index' %}" class="nav-item nav-link active"><i class="fa fa-home"></i>Home</a>
+                        <a href="{% url 'about' %}" class="nav-item nav-link"><i class="fa-solid fa-users"></i>About</a>
+                        <a href="{% url 'orderhistory' %}" class="nav-item nav-link"><i class="fa-solid fa-globe"></i>Order</a>
+                        <a href="{% url 'team' %}" class="nav-item nav-link"><i class="fa-solid fa-hat-cowboy-side"></i>Chef</a>
+                        <a href="{% url 'menu' %}" class="nav-item nav-link"><i class="fa-solid fa-spoon"></i>Menu</a>
+                        <a href="{% url 'cart' %}" class="nav-item nav-link"><i class="fa-regular fa-cart-shopping"></i>Cart</a>
+                        <a href="{% url 'contact' %}" class="nav-item nav-link"><i class="fa fa-phone"></i>Contact</a>
+                        
+                        {% if user.is_authenticated %}
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-warning btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              {{user.first_name}}
+                            </button>
+                            <div class="dropdown-menu">
+                              <a class="dropdown-item" href="{% url 'logout' %}">Logout<i class="fa-solid fa-right-from-bracket"></i></a>                            
+                            </div>
+                          </div>
+                         {% else %}
+                         <a href="{% url 'login' %}" class="nav-item nav-link">login<i class="fa-solid fa-right-to-bracket"></i></a>
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Nav Bar End -->
+
+
+        {% block content %}
+
+        
+        {% endblock %}
+
+
+
+                <!-- Footer Start -->
+                <div class="footer">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-7">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="footer-contact">
+                                            <h2>Our Address</h2>
+                                            <p><i class="fa fa-map-marker-alt"></i>𝑸𝒖𝒊𝒄𝒌-𝑭𝒂𝒗, 5th cross munnekulla main road, Banagalore India</p>
+                                            <p><i class="fa fa-phone-alt"></i>+91 8081773606</p>
+                                            <p><i class="fa fa-phone-alt"></i>+91 7440901753</p>
+                                            <p><i class="fa fa-envelope"></i>info@𝑸𝒖𝒊𝒄𝒌-𝑭𝒂𝒗.com</p>
+                                            <div class="footer-social">
+                                                <a href=""><i class="fab fa-twitter"></i></a>
+                                                <a href=""><i class="fab fa-facebook-f"></i></a>
+                                                <a href=""><i class="fab fa-youtube"></i></a>
+                                                <a href=""><i class="fab fa-instagram"></i></a>
+                                                <a href=""><i class="fab fa-linkedin-in"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="footer-link">
+                                            <h2>Quick Links</h2>
+                                            <a href="">Terms of use</a>
+                                            <a href="">Privacy policy</a>
+                                            <a href="">Cookies</a>
+                                            <a href="">Help</a>
+                                            <a href="">FQAs</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="footer-newsletter">
+                                    <h2>Newsletter</h2>
+                                    <p>
+                                        We are thrilled to announce the grand opening of 𝑸𝒖𝒊𝒄𝒌-𝑭𝒂𝒗, your newest gastronomic destination in the heart of Bengaluru! 🍽️🌟
+                                    </p>
+                                    <div class="form">
+                                        <input class="form-control" placeholder="Email goes here">
+                                        <button class="btn custom-btn">Submit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="copyright">
+                        <div class="container">
+                            <p>Copyright &copy; <a href="#">𝑸𝒖𝒊𝒄𝒌-𝑭𝒂𝒗</a>, All Right Reserved.</p>
+                            <p>Designed By <a href="https://akashgupta744.github.io/AkashPortfolio7440/im">team 𝑸𝒖𝒊𝒄𝒌-𝑭𝒂𝒗</a></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Footer End -->
+                <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+        <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+        <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'lib/tempusdominus/js/moment.min.js' %}"></script>
+        <script src="{% static 'lib/tempusdominus/js/moment-timezone.min.js' %}"></script>
+        <script src="{% static 'lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js' %}"></script>
+        
+        <!-- Contact Javascript File -->
+        <script src="{% static 'mail/jqBootstrapValidation.min.js' %}"></script>
+        <script src="{% static 'mail/contact.js' %}"></script>
+
+        <!-- Template Javascript -->
+        <script src="{% static 'js/main.js' %}"></script>
+
+        {% block payment %}
+          
+        {% endblock payment %}
+        
+        
+    </body>
+</html>
